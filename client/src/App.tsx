@@ -18,18 +18,13 @@ const queryClient = new QueryClient({
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Router>
+      <Router basename="/FFHA">
         <div className="min-h-screen bg-background text-foreground">
           <Routes>
             <Route path="/" element={<Game />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-          <Toaster 
-            position="top-center"
-            richColors
-            closeButton
-            duration={3000}
-          />
+          <Toaster position="top-center" richColors closeButton duration={3000} />
         </div>
       </Router>
     </QueryClientProvider>
