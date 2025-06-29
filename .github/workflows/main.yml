@@ -24,5 +24,8 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Update @types/node
-        run: npm install @types/node@^24.0.0
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist/public
