@@ -14,7 +14,7 @@ export default function HeroSelection() {
 
   const handleCreateHero = () => {
     if (!heroName.trim() || !selectedClass) return;
-
+    
     createHero(heroName.trim(), selectedClass);
   };
 
@@ -35,8 +35,12 @@ export default function HeroSelection() {
     <div className="min-h-screen flex items-center justify-center p-4">
       <Card className="w-full max-w-2xl bg-slate-800/90 border-slate-700 backdrop-blur-sm">
         <CardHeader className="text-center">
-          <CardTitle className="text-3xl font-bold text-white mb-2">Immortal Front: Age of Heroes</CardTitle>
-          <CardDescription className="text-slate-300 text-lg">Choose your hero and begin your legendary journey</CardDescription>
+          <CardTitle className="text-3xl font-bold text-white mb-2">
+            Immortal Front: Age of Heroes
+          </CardTitle>
+          <CardDescription className="text-slate-300 text-lg">
+            Choose your hero and begin your legendary journey
+          </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
           {/* Hero Name Input */}
@@ -59,29 +63,32 @@ export default function HeroSelection() {
             <Label className="text-white text-lg">Choose Your Class</Label>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {HERO_CLASSES.map((heroClass) => (
-                <div
+                <Card
                   key={heroClass.name}
                   className={`cursor-pointer transition-all duration-200 ${
-                    selectedClass === heroClass.name ? "bg-blue-600/50 border-blue-400 ring-2 ring-blue-400" : "bg-slate-700/50 border-slate-600 hover:bg-slate-600/50"
+                    selectedClass === heroClass.name
+                      ? "bg-blue-600/50 border-blue-400 ring-2 ring-blue-400"
+                      : "bg-slate-700/50 border-slate-600 hover:bg-slate-600/50"
                   }`}
                   onClick={() => setSelectedClass(heroClass.name)}
-                  tabIndex={0}
-                  role="button"
-                  onKeyPress={(e) => {
-                    if (e.key === "Enter" || e.key === " ") setSelectedClass(heroClass.name);
-                  }}
                 >
                   <CardContent className="p-4 text-center">
-                    <div className="flex justify-center mb-3 text-white">{getClassIcon(heroClass.name)}</div>
-                    <h3 className="font-bold text-white mb-2">{heroClass.name}</h3>
-                    <p className="text-sm text-slate-300 mb-3">{heroClass.description}</p>
+                    <div className="flex justify-center mb-3 text-white">
+                      {getClassIcon(heroClass.name)}
+                    </div>
+                    <h3 className="font-bold text-white mb-2">
+                      {heroClass.name}
+                    </h3>
+                    <p className="text-sm text-slate-300 mb-3">
+                      {heroClass.description}
+                    </p>
                     <div className="space-y-1 text-xs text-slate-400">
                       <div>ATK: {heroClass.baseStats.attack}</div>
                       <div>DEF: {heroClass.baseStats.defense}</div>
                       <div>HP: {heroClass.baseStats.health}</div>
                     </div>
                   </CardContent>
-                </div>
+                </Card>
               ))}
             </div>
           </div>

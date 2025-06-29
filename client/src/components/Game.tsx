@@ -22,7 +22,7 @@ export default function Game() {
     // Initialize game data on load
     loadHeroData();
     checkOfflineRewards();
-
+    
     // Start idle combat if hero is selected
     if (selectedHero) {
       startIdleCombat();
@@ -50,7 +50,9 @@ export default function Game() {
                 <User className="w-8 h-8 text-white" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-white">{selectedHero.name}</h1>
+                <h1 className="text-xl font-bold text-white">
+                  {selectedHero.name}
+                </h1>
                 <p className="text-sm text-slate-300">
                   Level {selectedHero.level} {selectedHero.class}
                 </p>
@@ -63,19 +65,31 @@ export default function Game() {
         {/* Main game tabs */}
         <Tabs defaultValue="combat" className="w-full">
           <TabsList className="grid w-full grid-cols-4 bg-slate-800/50 border-slate-700">
-            <TabsTrigger value="combat" className="flex items-center gap-2 data-[state=active]:bg-slate-700 data-[state=active]:text-white">
+            <TabsTrigger 
+              value="combat" 
+              className="flex items-center gap-2 data-[state=active]:bg-slate-700 data-[state=active]:text-white"
+            >
               <Sword className="w-4 h-4" />
               <span className="hidden sm:inline">Combat</span>
             </TabsTrigger>
-            <TabsTrigger value="equipment" className="flex items-center gap-2 data-[state=active]:bg-slate-700 data-[state=active]:text-white">
+            <TabsTrigger 
+              value="equipment" 
+              className="flex items-center gap-2 data-[state=active]:bg-slate-700 data-[state=active]:text-white"
+            >
               <Shield className="w-4 h-4" />
               <span className="hidden sm:inline">Equipment</span>
             </TabsTrigger>
-            <TabsTrigger value="workshop" className="flex items-center gap-2 data-[state=active]:bg-slate-700 data-[state=active]:text-white">
+            <TabsTrigger 
+              value="workshop" 
+              className="flex items-center gap-2 data-[state=active]:bg-slate-700 data-[state=active]:text-white"
+            >
               <Hammer className="w-4 h-4" />
               <span className="hidden sm:inline">Workshop</span>
             </TabsTrigger>
-            <TabsTrigger value="arena" className="flex items-center gap-2 data-[state=active]:bg-slate-700 data-[state=active]:text-white">
+            <TabsTrigger 
+              value="arena" 
+              className="flex items-center gap-2 data-[state=active]:bg-slate-700 data-[state=active]:text-white"
+            >
               <Trophy className="w-4 h-4" />
               <span className="hidden sm:inline">Arena</span>
             </TabsTrigger>
