@@ -1,4 +1,4 @@
-name: Main
+name: CI
 
 on:
   push:
@@ -6,15 +6,20 @@ on:
       - main
 
 jobs:
-  build-and-deploy:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Add your build/test steps here if needed
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20" # or your project's Node.js version
 
-      # Example: Deploy step (customize for your deployment)
-      - name: Deploy
-        run: echo "Deploying your project..."
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
