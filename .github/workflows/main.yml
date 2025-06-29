@@ -25,4 +25,4 @@ jobs:
         run: npm run build
 
       - name: Update @types/node
-        run: npm install @types/node@20.16.11
+        run: npm install @types/node@^24.0.0
