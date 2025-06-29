@@ -24,5 +24,5 @@ export default defineConfig({
     emptyOutDir: true,
   },
   assetsInclude: ["**/*.gltf", "**/*.glb", "**/*.mp3", "**/*.ogg", "**/*.wav"],
-  // base: "/FFHA/",
+  base: "/FFHA/",
 });
