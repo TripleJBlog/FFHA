@@ -7,7 +7,7 @@ on:
 
 permissions:
   contents: write # This grants the necessary write permissions to push to the repository
-  pages: write    # Recommended for GitHub Pages deployments
+  pages: write # Recommended for GitHub Pages deployments
   id-token: write # If your GitHub Pages uses OIDC for authentication (optional, but good practice)
 
 jobs:
@@ -32,5 +32,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/public
-          # publish_branch: gh-pages # This defaults to 'gh-pages', so you might not need to explicitly set it unless you use a different branch
+          publish_dir: ./dist
