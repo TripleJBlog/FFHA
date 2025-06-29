@@ -23,6 +23,11 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Configure Git user
+        run: |
+          git config --global user.email "52463868+TripleJBlog@users.noreply.github.com"
+          git config --global user.name "TripleJBlog"
+
       - name: Deploy to GitHub Pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
