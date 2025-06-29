@@ -1,5 +1,7 @@
 {
   "name": "forge-and-fury-heros-ascent",
+  "homepage": "https://triplejblog.github.io/FFHA/",
+  "description": "Forge and Fury: Hero's Ascent is a web-based game that combines elements of RPGs, strategy, and exploration. Players embark on a journey through a fantasy world.",
   "version": "1.0.0",
   "type": "module",
   "license": "MIT",
