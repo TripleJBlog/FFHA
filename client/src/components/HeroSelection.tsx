@@ -19,18 +19,14 @@ export default function HeroSelection() {
   };
 
   const getClassIcon = (className: string) => {
+    const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     switch (className) {
       case "Warrior":
-        // return <Sword className="w-8 h-8" />;
-        return <img src="/assets/character_warrior_sword.png" alt="Warrior" className="w-30 h-30 mx-auto" />;
+        return <img src={`${base}/assets/character_warrior.png`} alt="Warrior" className="w-12 h-12 mx-auto" />;
       case "Guardian":
-        // return <Shield className="w-8 h-8" />;
-        return <img src="/assets/character_guardian.png" alt="Warrior" className="w-30 h-30 mx-auto" />;
-
+        return <img src={`${base}/assets/character_guardian.png`} alt="Guardian" className="w-12 h-12 mx-auto" />;
       case "Mage":
-        // return <Zap className="w-8 h-8" />;
-        return <img src="/assets/character_mage.png" alt="Warrior" className="w-30 h-30 mx-auto" />;
-
+        return <img src={`${base}/assets/character_mage.png`} alt="Mage" className="w-12 h-12 mx-auto" />;
       default:
         return <Sword className="w-8 h-8" />;
     }
