@@ -10,15 +10,15 @@ export default function HeroClassIcon({ className, width_size = 48 }: HeroClassI
 
   switch (className) {
     case "Warrior":
-      src = `${base}/assets/character_warrior_sword.png`;
+      src = `${base}/assets/character_warrior_sword.webp`;
       alt = "Warrior";
       break;
     case "Guardian":
-      src = `${base}/assets/character_guardian.png`;
+      src = `${base}/assets/character_guardian.webp`;
       alt = "Guardian";
       break;
     case "Mage":
-      src = `${base}/assets/character_mage.png`;
+      src = `${base}/assets/character_mage.webp`;
       alt = "Mage";
       break;
     default:
