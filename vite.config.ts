@@ -7,7 +7,7 @@ import glsl from "vite-plugin-glsl";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   plugins: [react(), glsl()],
   resolve: {
     alias: {
@@ -17,12 +17,12 @@ export default defineConfig({
   },
   root: path.resolve(__dirname, "client"),
   server: {
-    port: 5173, // Vite 개발 서버 포트 지정
+    port: 5173,
   },
   build: {
     outDir: path.resolve(__dirname, "dist"),
     emptyOutDir: true,
   },
   assetsInclude: ["**/*.gltf", "**/*.glb", "**/*.mp3", "**/*.ogg", "**/*.wav"],
-  base: "/FFHA/",
-});
+  base: command === "build" ? "/FFHA/" : "/",
+}));

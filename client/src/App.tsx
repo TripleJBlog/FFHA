@@ -15,10 +15,12 @@ const queryClient = new QueryClient({
   },
 });
 
+const basename = import.meta.env.BASE_URL.replace(/\/$/, "");
+
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Router basename="/FFHA">
+      <Router basename={basename}>
         <div className="min-h-screen bg-background text-foreground">
           <Routes>
             <Route path="/" element={<Game />} />
