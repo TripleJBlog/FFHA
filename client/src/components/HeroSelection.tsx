@@ -14,18 +14,23 @@ export default function HeroSelection() {
 
   const handleCreateHero = () => {
     if (!heroName.trim() || !selectedClass) return;
-    
+
     createHero(heroName.trim(), selectedClass);
   };
 
   const getClassIcon = (className: string) => {
     switch (className) {
       case "Warrior":
-        return <Sword className="w-8 h-8" />;
+        // return <Sword className="w-8 h-8" />;
+        return <img src="/assets/character_warrior_sword.png" alt="Warrior" className="w-30 h-30 mx-auto" />;
       case "Guardian":
-        return <Shield className="w-8 h-8" />;
+        // return <Shield className="w-8 h-8" />;
+        return <img src="/assets/character_guardian.png" alt="Warrior" className="w-30 h-30 mx-auto" />;
+
       case "Mage":
-        return <Zap className="w-8 h-8" />;
+        // return <Zap className="w-8 h-8" />;
+        return <img src="/assets/character_mage.png" alt="Warrior" className="w-30 h-30 mx-auto" />;
+
       default:
         return <Sword className="w-8 h-8" />;
     }
@@ -35,12 +40,8 @@ export default function HeroSelection() {
     <div className="min-h-screen flex items-center justify-center p-4">
       <Card className="w-full max-w-2xl bg-slate-800/90 border-slate-700 backdrop-blur-sm">
         <CardHeader className="text-center">
-          <CardTitle className="text-3xl font-bold text-white mb-2">
-            Immortal Front: Age of Heroes
-          </CardTitle>
-          <CardDescription className="text-slate-300 text-lg">
-            Choose your hero and begin your legendary journey
-          </CardDescription>
+          <CardTitle className="text-3xl font-bold text-white mb-2">Immortal Front: Age of Heroes</CardTitle>
+          <CardDescription className="text-slate-300 text-lg">Choose your hero and begin your legendary journey</CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
           {/* Hero Name Input */}
@@ -66,22 +67,14 @@ export default function HeroSelection() {
                 <Card
                   key={heroClass.name}
                   className={`cursor-pointer transition-all duration-200 ${
-                    selectedClass === heroClass.name
-                      ? "bg-blue-600/50 border-blue-400 ring-2 ring-blue-400"
-                      : "bg-slate-700/50 border-slate-600 hover:bg-slate-600/50"
+                    selectedClass === heroClass.name ? "bg-blue-600/50 border-blue-400 ring-2 ring-blue-400" : "bg-slate-700/50 border-slate-600 hover:bg-slate-600/50"
                   }`}
                   onClick={() => setSelectedClass(heroClass.name)}
                 >
                   <CardContent className="p-4 text-center">
-                    <div className="flex justify-center mb-3 text-white">
-                      {getClassIcon(heroClass.name)}
-                    </div>
-                    <h3 className="font-bold text-white mb-2">
-                      {heroClass.name}
-                    </h3>
-                    <p className="text-sm text-slate-300 mb-3">
-                      {heroClass.description}
-                    </p>
+                    <div className="flex justify-center mb-3 text-white">{getClassIcon(heroClass.name)}</div>
+                    <h3 className="font-bold text-white mb-2">{heroClass.name}</h3>
+                    <p className="text-sm text-slate-300 mb-3">{heroClass.description}</p>
                     <div className="space-y-1 text-xs text-slate-400">
                       <div>ATK: {heroClass.baseStats.attack}</div>
                       <div>DEF: {heroClass.baseStats.defense}</div>
