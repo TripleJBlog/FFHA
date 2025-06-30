@@ -21,7 +21,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Router basename={basename}>
-        <div className="min-h-screen bg-background text-foreground">
+        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 overflow-y-auto">
           <Routes>
             <Route path="/" element={<Game />} />
             <Route path="*" element={<NotFound />} />
