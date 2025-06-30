@@ -1,6 +1,8 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import { createServer as createViteServer } from "vite";
+import path from "path";
 
 const app = express();
 app.use(express.json());
@@ -51,6 +53,10 @@ app.use((req, res, next) => {
   // setting up all the other routes so the catch-all route
   // doesn't interfere with the other routes
   if (app.get("env") === "development") {
+    const vite = await createViteServer({
+      server: { middlewareMode: true },
+      root: path.resolve(__dirname, "../client"),
+    });
     await setupVite(app, server);
   } else {
     serveStatic(app);
