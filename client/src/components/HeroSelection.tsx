@@ -3,9 +3,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Sword, Shield, Zap } from "lucide-react";
 import { useHero } from "@/lib/stores/useHero";
 import { HERO_CLASSES } from "@/lib/gameConstants";
+import HeroClassIcon from "./HeroClassIcon";
 
 export default function HeroSelection() {
   const [heroName, setHeroName] = useState("");
@@ -16,20 +16,6 @@ export default function HeroSelection() {
     if (!heroName.trim() || !selectedClass) return;
 
     createHero(heroName.trim(), selectedClass);
-  };
-
-  const getClassIcon = (className: string) => {
-    const base = import.meta.env.BASE_URL.replace(/\/$/, "");
-    switch (className) {
-      case "Warrior":
-        return <img src={`${base}/assets/character_warrior.png`} alt="Warrior" className="w-12 h-12 mx-auto" />;
-      case "Guardian":
-        return <img src={`${base}/assets/character_guardian.png`} alt="Guardian" className="w-12 h-12 mx-auto" />;
-      case "Mage":
-        return <img src={`${base}/assets/character_mage.png`} alt="Mage" className="w-12 h-12 mx-auto" />;
-      default:
-        return <Sword className="w-8 h-8" />;
-    }
   };
 
   return (
@@ -68,7 +54,9 @@ export default function HeroSelection() {
                   onClick={() => setSelectedClass(heroClass.name)}
                 >
                   <CardContent className="p-4 text-center">
-                    <div className="flex justify-center mb-3 text-white">{getClassIcon(heroClass.name)}</div>
+                    <div className="flex justify-center mb-3 text-white">
+                      <HeroClassIcon className={heroClass.name} width_size={160} />
+                    </div>
                     <h3 className="font-bold text-white mb-2">{heroClass.name}</h3>
                     <p className="text-sm text-slate-300 mb-3">{heroClass.description}</p>
                     <div className="space-y-1 text-xs text-slate-400">
