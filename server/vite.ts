@@ -75,3 +75,25 @@ export function serveStatic(app: Express) {
     res.sendFile(path.resolve(distPath, "index.html"));
   });
 }
+
+export async function setupViteDev(app: Express, __dirname: string) {
+  const vite = await createViteServer({
+    configFile: path.resolve(__dirname, "../vite.config.ts"),
+    root: path.resolve(__dirname, "../client"),
+    server: { middlewareMode: true },
+  });
+
+  app.use(vite.middlewares);
+
+  app.use("*", async (req, res, next) => {
+    try {
+      const url = req.originalUrl;
+      const fs = await import("fs/promises");
+      let template = await vite.transformIndexHtml(url, await fs.readFile(path.resolve(vite.config.root, "index.html"), "utf-8"));
+      res.status(200).set({ "Content-Type": "text/html" }).end(template);
+    } catch (e) {
+      vite.ssrFixStacktrace(e as Error);
+      next(e);
+    }
+  });
+}
